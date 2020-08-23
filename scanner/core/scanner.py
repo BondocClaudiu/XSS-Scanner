@@ -64,7 +64,8 @@ class Scanner:
             if(len(self.params.keys()) == 0):
                 print(red("Cannot find query params!"))
             else:
-                for payload in self.payloads:
+                for count, payload in enumerate(self.payloads, start=1):
+                    print_payload_count(count, self.payloads)
                     self.query_scanner(payload)
 
             # Then html scan,if present
@@ -73,7 +74,8 @@ class Scanner:
                 self.refresh_page()
 
                 self.web_elements = self.get_web_elements()
-                for payload in self.payloads:
+                for count, payload in enumerate(self.payloads, start=1):
+                    print_payload_count(count, self.payloads)
                     self.html_scanner(payload, len(
                         self.web_elements), self.base_url)
         except TimeoutException as err:

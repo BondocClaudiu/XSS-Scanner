@@ -69,5 +69,9 @@ def get_date_time_as_string(time_stamp) -> str:
     return time_stamp.strftime("%m/%d/%Y, %H:%M:%S")
 
 
+def print_payload_count(count: int, enumeration: list) -> None:
+    print(blue(f"Payload {count}/{len(enumeration)}"))
+
+
 def print_error_message(message: str, payload: str, err) -> None:
     print(red(message + ' Payload: ' + str(payload or '') + '\nError: ' + repr(err)))
