@@ -118,7 +118,7 @@ __   __  _____  _____    _____
                     else:
                         self.printUnknownOption()
 
-                print('\nWould you like to store the results in a JSON file?\n')
+                print('\nWould you like to store the results in a JSON file?')
                 while True:
                     ans = self.getYorN()
                     if ans == 'n':

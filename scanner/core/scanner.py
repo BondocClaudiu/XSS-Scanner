@@ -1,17 +1,11 @@
-import sys
-from time import sleep
-import requests
 import json
 import urllib
 import os
 import datetime
 import crayons
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.common.exceptions import ElementNotInteractableException, NoSuchElementException, TimeoutException, UnexpectedAlertPresentException
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import StaleElementReferenceException
+from selenium.common.exceptions import (ElementNotInteractableException, NoSuchElementException,
+                                        StaleElementReferenceException, TimeoutException, UnexpectedAlertPresentException)
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
