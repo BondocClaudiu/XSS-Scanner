@@ -5,7 +5,7 @@ import json
 import urllib
 import os
 import datetime
-from crayons import *
+import crayons
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import ElementNotInteractableException, NoSuchElementException, TimeoutException, UnexpectedAlertPresentException
@@ -47,7 +47,7 @@ class Scanner:
                 raise Exception('Missing Report Output')
 
     def run(self):
-        print(blue('[*] Running XSS Scan [*]'))
+        print(crayons.blue('[*] Running XSS Scan [*]'))
         options = webdriver.ChromeOptions()
 
         if(self.is_headless_driver):
@@ -59,10 +59,10 @@ class Scanner:
             self.driver.switch_to.window(window)
 
             # First try query scan
-            print(blue("Starting query scan!"))
+            print(crayons.blue("Starting query scan!"))
 
             if(len(self.params.keys()) == 0):
-                print(red("Cannot find query params!"))
+                print(crayons.red("Cannot find query params!"))
             else:
                 for count, payload in enumerate(self.payloads, start=1):
                     print_payload_count(count, self.payloads)
@@ -70,7 +70,7 @@ class Scanner:
 
             # Then html scan,if present
             if self.html_scan:
-                print(blue("Starting html scan!"))
+                print(crayons.blue("Starting html scan!"))
                 self.refresh_page()
 
                 self.web_elements = self.get_web_elements()
@@ -82,7 +82,7 @@ class Scanner:
             print_error_message(
                 'Timeout error !!!', 'None at this stage!', None, err)
         except KeyboardInterrupt:
-            print(blue('Scan closed by user. Saving the partial results ...'))
+            print(crayons.blue('Scan closed by user. Saving the partial results ...'))
             self.final_report()
 
         self.final_report()
@@ -222,19 +222,19 @@ class Scanner:
     def add_result(self, raw_params, target_url, scan_type):
         self.result_count += 1
 
-        print(green('RESULTS: {}'.format(
+        print(crayons.green('RESULTS: {}'.format(
             self.result_count).center(50, '='), bold=True))
         print()
-        print(blue('[') + green('*', bold=True) + blue(']') +
-              green(' Found XSS Vulnerability'))
-        print(blue('[') + green('*', bold=True) + blue(']') +
-              green(' Scan Type:'), blue(scan_type))
-        print(blue('[') + green('*', bold=True) + blue(']') +
-              green(' Payload:'), blue(raw_params))
-        print(blue('[') + green('*', bold=True) + blue(']') +
-              green(' URL:'), blue(target_url))
+        print(crayons.blue('[') + crayons.green('*', bold=True) + crayons.blue(']') +
+              crayons.green(' Found XSS Vulnerability'))
+        print(crayons.blue('[') + crayons.green('*', bold=True) + crayons.blue(']') +
+              crayons.green(' Scan Type:'), crayons.blue(scan_type))
+        print(crayons.blue('[') + crayons.green('*', bold=True) + crayons.blue(']') +
+              crayons.green(' Payload:'), crayons.blue(raw_params))
+        print(crayons.blue('[') + crayons.green('*', bold=True) + crayons.blue(']') +
+              crayons.green(' URL:'), crayons.blue(target_url))
         print()
-        print(green(''.center(50, '='), bold=True))
+        print(crayons.green(''.center(50, '='), bold=True))
 
         self.results['results'].append({
             'count': self.result_count,
@@ -267,15 +267,17 @@ class Scanner:
                 json_file.seek(0)
                 json.dump(obj, json_file, indent=4)
 
-            print(blue('[*] Stored Results To {}'.format(real_path)))
+            print(crayons.blue(
+                '[*] Stored Results To {}'.format(real_path)))
 
     def final_report(self):
-        print(blue('[*] Scan Completed'))
+        print(crayons.blue('[*] Scan Completed'))
         if self.result_count == 0:
-            print(red(
+            print(crayons.red(
                 '[!] No Results Found. Warning This Does NOT Mean You Are Not Still Vulnerable [!]'))
         else:
-            print(green('Found ' + str(self.result_count) + ' vulnerabiliti(es)!'))
+            print(crayons.green(
+                'Found ' + str(self.result_count) + ' vulnerabiliti(es)!'))
 
             self.store_results()
         input("Press any key to exit.....")

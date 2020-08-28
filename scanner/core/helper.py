@@ -1,7 +1,7 @@
 import datetime
 from typing import Dict, List
 import urllib
-from crayons import *
+import crayons
 
 
 def get_payloads_from_vectors(fast=False) -> List[str]:
@@ -70,8 +70,9 @@ def get_date_time_as_string(time_stamp) -> str:
 
 
 def print_payload_count(count: int, enumeration: list) -> None:
-    print(blue(f"Payload {count}/{len(enumeration)}"))
+    print(crayons.blue(f"Payload {count}/{len(enumeration)}"))
 
 
 def print_error_message(message: str, payload: str, err) -> None:
-    print(red(message + ' Payload: ' + str(payload or '') + '\nError: ' + repr(err)))
+    print(crayons.red(message + ' Payload: ' +
+                      str(payload or '') + '\nError: ' + repr(err)))

@@ -1,7 +1,7 @@
 import os
 import sys
 from enum import Enum
-from crayons import *
+import crayons
 from scanner.core.scanner import Scanner
 
 
@@ -45,19 +45,20 @@ __   __  _____  _____    _____
         htmlScan = False
         headlessBrowser = False
 
-        print(blue(self.banner))
+        print(crayons.blue(self.banner))
         print('\nWelcome to XSS Scanner. Choose one of the following options:\n')
         print(self.menu)
         if 'win32' in sys.platform or 'win64' in sys.platform:
             ps1 = str('xss_scanner> ')
         else:
-            ps1 = str(blue('[') + white('xss_scanner') + blue(']') + '> ')
+            ps1 = str(crayons.blue(
+                '[') + crayons.white('xss_scanner') + crayons.blue(']') + '> ')
 
         while True:
             scanOption = int(input(ps1))
 
             if(scanOption not in [opt.value for opt in ScanOption]):
-                print(red('\nUnknown Option. Please Choose a valid one\n'))
+                print(crayons.red('\nUnknown Option. Please Choose a valid one\n'))
             else:
 
                 if(scanOption == ScanOption.fullWithHtml.value):
@@ -74,7 +75,7 @@ __   __  _____  _____    _____
 
                 print('\nPlease enter URL to scan w/ parameters included:')
                 print(
-                    green('[ex.]'), 'https://xss-game.appspot.com/level1/frame?query=test\n')
+                    crayons.green('[ex.]'), 'https://xss-game.appspot.com/level1/frame?query=test\n')
                 url = input(ps1)
 
                 print(
@@ -98,7 +99,7 @@ __   __  _____  _____    _____
                         break
                     elif ans == 'y':
                         print('Please enter your cookies strings in this format:')
-                        print(green(
+                        print(crayons.green(
                             '[ex.]'), '<cookiename>:<cookievalue>:<cookiepath>,<cookiename>:<cookievalue>:<cookiepath>\n')
                         cookies = input(ps1)
                         break
@@ -133,7 +134,7 @@ __   __  _____  _____    _____
                         self.printUnknownOption()
 
                 print(
-                    red('[*] This may take a while. Press ENTER to continue or Ctrl-C to quit.. [*]'))
+                    crayons.red('[*] This may take a while. Press ENTER to continue or Ctrl-C to quit.. [*]'))
                 input()
                 print()
                 scanner = Scanner(url, cookies, stop_on_first, store_output, report_out,
@@ -142,7 +143,7 @@ __   __  _____  _____    _____
                 scanner.store_results()
 
     def printUnknownOption(self):
-        print(red('\nUnknown option. Please choose Y or N.\n'))
+        print(crayons.red('\nUnknown option. Please choose Y or N.\n'))
 
     def getYorN(self) -> str:
         return input('\n[Y\\n]> ').lower()
