@@ -1,7 +1,7 @@
 import json
 import urllib
 import os
-import datetime
+from datetime import datetime
 import crayons
 from selenium import webdriver
 from selenium.common.exceptions import (ElementNotInteractableException, NoSuchElementException,
@@ -28,7 +28,7 @@ class Scanner:
         self.result_count = 0
         self.results = {
             'targetUrl': self.url,
-            'startScanTimeStamp': get_date_time_as_string(datetime.datetime.now()),
+            'startScanTimeStamp': get_date_time_as_string(datetime.now()),
             'endScanTimeStamp': None,
             'results': []
         }
@@ -254,7 +254,7 @@ class Scanner:
                 file.write('{}')
             with open(real_path, 'r+') as json_file:
                 self.results['endScanTimeStamp'] = get_date_time_as_string(
-                    datetime.datetime.now())
+                    datetime.now())
                 obj = json.load(json_file)
                 obj = self.results
                 json_file.truncate()
