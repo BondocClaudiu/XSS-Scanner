@@ -23,7 +23,7 @@ __   __  _____  _____    _____
  / . \  ____) |____) |  ____) || (__| (_| || | | || | | ||  __/| |   
 /_/ \_\|_____/|_____/  |_____/  \___|\__,_||_| |_||_| |_| \___||_|   
                                                                         
-            Created by @BondocClaudiu | https://github.com/BondocClaudiu/XSS-Scanner"""
+Created by @BondocClaudiu | https://github.com/BondocClaudiu/XSS-Scanner"""
         self.menu = """\
     [1] Scan URL (Full with HTML Scan)
 
