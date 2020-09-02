@@ -10,7 +10,7 @@ def get_payloads_from_vectors(fast=False) -> List[str]:
 
     with open(fastVectorsPath if fast else vectorsPath, 'r', encoding="utf-8") as vector_file:
         for vector in vector_file.readlines():
-            payloads.append(vector)
+            payloads.append(vector.replace('\n', ''))
 
     return payloads
 
